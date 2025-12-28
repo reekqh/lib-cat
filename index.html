@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Catalogue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Library Catalogue</h1>
+            <p class="subtitle">Browse our collection</p>
+        </header>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search books by title or author..." class="search-input">
+            <select id="genreFilter" class="genre-select">
+                <option value="all">All Genres</option>
+                </select>
+        </div>
+
+        <main id="bookCatalog" class="book-grid">
+            </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
