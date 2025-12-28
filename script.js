@@ -4,6 +4,8 @@ const books = [
         author: "George Orwell",
         genre: "Dystopian",
         year: 1949,
+        total: 10,
+        available: 3,
         image: "https://m.media-amazon.com/images/I/71wANojhEKL._AC_UF1000,1000_QL80_.jpg"
     },
     {
@@ -11,12 +13,16 @@ const books = [
         author: "Harper Lee",
         genre: "Classic",
         year: 1960,
+        total: 5,
+        available: 0,
         image: "https://static.yakaboo.ua/media/cloudflare/product/webp/600x840/8/1/816jexyardl.jpg"
     },
     {
         title: "The Great Gatsby",
         author: "F. Scott Fitzgerald",
         genre: "Classic",
+        total: 8,
+        available: 8,
         year: 1925,
         image: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1650033243i/41733839.jpg"
     },
@@ -25,6 +31,8 @@ const books = [
         author: "J.R.R. Tolkien",
         genre: "Fantasy",
         year: 1937,
+        total: 12,
+        available: 5,
         image: "https://static.yakaboo.ua/media/cloudflare/product/webp/600x840/7/1/7103gcfdgdl.jpg"
     },
     {
@@ -32,6 +40,8 @@ const books = [
         author: "J.K. Rowling",
         genre: "Fantasy",
         year: 1997,
+        total: 15,
+        available: 12,
         image: "https://m.media-amazon.com/images/I/91wKDODkgWL._AC_UF1000,1000_QL80_.jpg"
     },
     {
@@ -39,6 +49,8 @@ const books = [
         author: "Aldous Huxley",
         genre: "Dystopian",
         year: 1932,
+        total: 7,
+        available: 2,
         image: "https://static.yakaboo.ua/media/catalog/product/9/7/9780099477464.jpg"
     }
 ];
@@ -58,16 +70,20 @@ function displayBooks(bookList) {
 
     bookList.forEach(book => {
         const col = document.createElement('div');
-        col.className = 'col';
-
+        const statusClass = book.available === 0 ? 'out-of-stock' : 'in-stock';
+        
         col.innerHTML = `
-            <div class="card h-100">
+            <div class="card ${statusClass}">
                 <img src="${book.image}" class="card-img-top" alt="${book.title}">
                 <div class="card-body">
                     <h5 class="card-title">${book.title}</h5>
                     <p class="card-text"><strong>Author:</strong> ${book.author}</p>
                     <p class="card-text"><strong>Genre:</strong> ${book.genre}</p>
                     <p class="card-text"><strong>Year:</strong> ${book.year}</p>
+                    <p class="card-text copies">
+                        <strong>Copies:</strong> ${book.available} / ${book.total}
+                    </p>
+                    <span class="badge">${book.available > 0 ? 'Available' : 'Borrowed'}</span>
                 </div>
             </div>
         `;
